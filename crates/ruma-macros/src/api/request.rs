@@ -29,7 +29,7 @@ pub fn expand_request(attr: RequestAttr, item: ItemStruct) -> TokenStream {
     quote! {
         #maybe_feature_error
 
-        #[derive(Clone, Debug, #ruma_macros::Request, #ruma_common::serde::_FakeDeriveSerde)]
+        #[derive(Clone, Debug, #ruma_macros::Request, #ruma_common::serde::_FakeDeriveSerde, ::serde::Deserialize)]
         #[cfg_attr(not(feature = "unstable-exhaustive-types"), non_exhaustive)]
         #[ruma_api(error = #error_ty)]
         #item
